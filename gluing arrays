@@ -1,0 +1,54 @@
+Есть два массива: [1, 3, 4, 5, 8, 9, 11] и [3, 7, 8, 12, 15]. Нужно скомпоновать их в один, сохранив направление сортировки и не используя метод sort.
+
+const mergeASC = (a, b) => {
+  let i = 0;
+  let j = 0;
+  const result = [];
+  
+  while (i < a.length || j < b.length) {      
+    if (a[i] < b[j]) {
+      result.push(a[i]);
+      
+      i++;  
+      
+      continue;
+    }
+    
+    if (a[i] > b[j]) {
+      result.push(b[j]);
+      
+      j++;  
+      
+      continue;
+    }
+    
+    if (a[i] === b[j]) {
+      result.push(a[i], b[j]);
+      
+      i++; 
+      j++;
+      
+      continue;
+    }
+    
+    if (a[i]) {      
+      result.push(a[i]);
+      
+      i++; 
+      
+      continue;
+    }
+    
+    if (b[j]) {      
+      result.push(b[j]);
+      
+      j++;       
+    } 
+  }
+  
+  return result;
+}
+
+
+mergeASC([1, 3, 4, 5, 8, 9, 11], [3, 7, 8, 12, 15]); 
+// [1, 3, 3, 4, 5, 7, 8, 8, 9, 11, 12, 15]
